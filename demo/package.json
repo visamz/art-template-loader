@@ -1,0 +1,10 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "devDependencies": {
+    "art-template": "^3.0.3",
+    "art-template-loader": "^0.1.0",
+    "loader-utils": "^0.2.15",
+    "lodash": "^4.13.1"
+  }
+}
