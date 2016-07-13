@@ -1,5 +1,20 @@
 # artTemplate loader for webpack
 
+> [artTemplate](https://github.com/aui/artTemplate) 是新一代 javascript 模板引擎
+
+### 模板语法
+```
+{{if admin}}
+    {{include 'admin_content'}}
+
+    {{each list}}
+        <div>{{$index}}. {{$value.user}}</div>
+    {{/each}}
+{{/if}}
+```
+
+[查看语法与演示](https://github.com/aui/artTemplate/wiki/syntax:simple)
+
 ## Installation
 
 `npm install art-template-loader`
@@ -14,3 +29,4 @@ var template = require("art-template!./file.tpl");
 
 // And then use it somewhere in your code
 template(data) // Pass object with data
+```
