@@ -7,6 +7,15 @@
     <body>
         <div id="list"></div>
         <div id="content"></div>
+        <div id="inline"></div>
+        <script type="text/html" id="inlineTpl">
+          <h1>{{title}}</h1>
+          <ul>
+              {{each list as value i}}
+                  <li>索引 {{i + 1}} ：{{value}}</li>
+              {{/each}}
+          </ul>
+        </script>
         <script src="./bundle.js"></script>
     </body>
 </html>
