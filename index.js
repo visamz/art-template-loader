@@ -1,6 +1,6 @@
 var _ = require('lodash');
 var loaderUtils = require('loader-utils');
-var artTmplate = require('art-template/dist/template');
+var template = require('art-template/dist/template');
 
 module.exports = function (source) {
     this.cacheable && this.cacheable();
@@ -9,16 +9,37 @@ module.exports = function (source) {
     var options = this.options.artTemplateLoader || {};
     var ANONYMOUS_RE = /^function\s+anonymous/;
     var UTILS_RE = /\$utils=this/;
+    var render;
+    var _oldOnError = template.onerror;
 
-    options = _.extend({}, query, options);
+    template.onerror = function(e) {
+        console.log(e)
+        var message = 'art Template Error\n\n';
+        for (var name in e) {
+            if (_.includes(['name', 'message', 'source'], name)) {
+                message += '<' + name + '>\n' + e[name] + '\n\n';
+            }
+        }
 
-    var render = artTmplate.compile(source, _.extend({}, query, options));
+        throw new SyntaxError(message);
+    };
 
-    render = render
-        .toString()
-        .replace(ANONYMOUS_RE, 'function').replace(UTILS_RE, '$utils=template.utils')
+    try {
+        options = _.extend({}, query, options);
+        render = template.render(source, _.extend({}, query, options));
 
-    return "var template = require('art-template/dist/template');\n\n"
-         + "module.exports = " + render;
+        // 传空数据执行一次，在编译时及时发现语法错误
+        render({})
 
+        render = render
+            .toString()
+            .replace(ANONYMOUS_RE, 'function').replace(UTILS_RE, '$utils=template.utils')
+
+        render = "var template = require('art-template/dist/template');\n\n"
+             + "module.exports = " + render;
+
+        this.callback(null, render)
+    } catch(err) {
+        this.callback(err)
+    }
 };
