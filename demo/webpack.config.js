@@ -9,7 +9,7 @@ module.exports = {
         loaders: [
             {
                 test: /\.tpl$/,
-                loader: 'art-template'
+                loader: '../index.js'
             }
         ]
     }

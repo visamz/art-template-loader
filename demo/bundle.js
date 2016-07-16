@@ -58,10 +58,14 @@
 	    value: '<span style="color:#F00">hello world!</span>'
 	}
 
+	var inline = {
+		title: '测试模板内联',
+		list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
+	}
 
 	document.getElementById('list').innerHTML = listTpl(list)
 	document.getElementById('content').innerHTML = noEscapeTpl(noEscape)
-	document.getElementById('inline').innerHTML = template('inlineTpl', list)
+	document.getElementById('inline').innerHTML = template('inlineTpl', inline)
 
 
 /***/ },
