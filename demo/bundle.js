@@ -72,23 +72,23 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var template = __webpack_require__(2);
+	var template = __webpack_require__(2)
 
-	module.exports = function($data,$filename
+	module.exports = (function($data,$filename
 	/**/) {
-	'use strict';var $utils=template.utils,$helpers=$utils.$helpers,$escape=$utils.$escape,title=$data.title,$each=$utils.$each,list=$data.list,value=$data.value,i=$data.i,$out='';$out+='<h1>';
+	'use strict';var $utils=this,$helpers=$utils.$helpers,$escape=$utils.$escape,title=$data.title,$each=$utils.$each,list=$data.list,value=$data.value,i=$data.i,$out='';$out+='<h1>';
 	$out+=$escape(title);
-	$out+='</h1>\n<ul>\n    ';
+	$out+='</h1>\r\n<ul>\r\n    ';
 	$each(list,function(value,i){
-	$out+='\n        <li>索引 ';
+	$out+='\r\n        <li>索引 ';
 	$out+=$escape(i + 1);
 	$out+=' ：';
 	$out+=$escape(value);
-	$out+='</li>\n    ';
+	$out+='</li>\r\n    ';
 	});
-	$out+='\n</ul>\n';
+	$out+='\r\n</ul>\r\n';
 	return new String($out);
-	}
+	}).bind(template.utils)
 
 /***/ },
 /* 2 */
@@ -101,17 +101,17 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var template = __webpack_require__(2);
+	var template = __webpack_require__(2)
 
-	module.exports = function($data,$filename
+	module.exports = (function($data,$filename
 	/**/) {
-	'use strict';var $utils=template.utils,$helpers=$utils.$helpers,$string=$utils.$string,value=$data.value,$escape=$utils.$escape,$out='';$out+='<p>不转义：';
+	'use strict';var $utils=this,$helpers=$utils.$helpers,$string=$utils.$string,value=$data.value,$escape=$utils.$escape,$out='';$out+='<p>不转义：';
 	$out+=$string(value);
-	$out+='</p>\n<p>默认转义： ';
+	$out+='</p>\r\n<p>默认转义： ';
 	$out+=$escape(value);
-	$out+='</p>\n';
+	$out+='</p>\r\n';
 	return new String($out);
-	}
+	}).bind(template.utils)
 
 /***/ }
 /******/ ]);
