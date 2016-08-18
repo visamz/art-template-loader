@@ -8,6 +8,7 @@ module.exports = function(source) {
     var query = loaderUtils.parseQuery(this.query)
     var options = this.options.artTemplateLoader || {}
     var ANONYMOUS_RE = /^function\s+anonymous/
+    var UTILS_RE = /\$utils=this/
     var _oldOnError = template.onerror
     var render
 
@@ -26,9 +27,10 @@ module.exports = function(source) {
         options = _.extend({}, query, options)
         render = template.render(source, _.extend({}, query, options))
                 .toString().replace(ANONYMOUS_RE, 'function')
+                .replace(UTILS_RE, '$utils=template.utils')
         render =
             "var template = require('art-template/dist/template')\n\n" +
-            "module.exports = (" + render + ").bind(template.utils)"
+            "module.exports = " + render
 
         this.callback(null, render)
     } catch (err) {
