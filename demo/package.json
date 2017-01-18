@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "devDependencies": {
     "art-template": "^3.0.3",
-    "art-template-loader": "^0.1.0"
+    "art-template-loader": "^0.1.4",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.14.1"
   }
 }
