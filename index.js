@@ -25,7 +25,7 @@ module.exports = function(source) {
 
     try {
         options = _.extend({}, query, options)
-        render = template.render(source, _.extend({}, query, options))
+        render = template.compile(source, _.extend({}, query, options))
                 .toString().replace(ANONYMOUS_RE, 'function')
                 .replace(UTILS_RE, '$utils=template.utils')
         render =
