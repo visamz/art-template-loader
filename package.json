@@ -1,6 +1,6 @@
 {
   "name": "art-template-loader",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "artTemplate loader for webpack",
   "main": "index.js",
   "scripts": {
@@ -11,15 +11,15 @@
     "url": "git://github.com/byends/art-template-loader.git"
   },
   "keywords": [
+    "webpack-loader",
     "artTemplate",
-    "loader",
-    "webpack"
+    "art-template-loader"
   ],
   "author": "Byends",
   "license": "MIT",
   "dependencies": {
     "art-template": "^3.1.3",
     "loader-utils": "^0.2.15",
-    "lodash": "^4.13.1"
+    "lodash": "^4.17.4"
   }
 }

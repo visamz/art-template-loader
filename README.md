@@ -2,6 +2,13 @@
 
 > [artTemplate](https://github.com/aui/artTemplate) 是新一代 javascript 模板引擎
 
+
+> 2017-03-15 update
+
+0.2.0 version support loader options  
+`format: native` will use artTemplate native grammar
+
+
 ### 模板语法
 ```
 {{if admin}}

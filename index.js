@@ -1,12 +1,12 @@
 var _ = require('lodash')
 var loaderUtils = require('loader-utils')
-var template = require('art-template/dist/template')
 
 module.exports = function(source) {
     this.cacheable && this.cacheable()
 
-    var query = loaderUtils.parseQuery(this.query)
-    var options = this.options.artTemplateLoader || {}
+    var options = _.extend({}, this.options.artTemplateLoader, loaderUtils.parseQuery(this.query))
+    var format = options.format && (options.format == 'native') ? 'template-native' : 'template'
+    var template = require('art-template/dist/' + format)
     var ANONYMOUS_RE = /^function\s+anonymous/
     var UTILS_RE = /\$utils=this/
     var _oldOnError = template.onerror
@@ -23,13 +23,13 @@ module.exports = function(source) {
         throw new SyntaxError(message)
     }
 
-    try {
-        options = _.extend({}, query, options)
-        render = template.compile(source, _.extend({}, query, options))
+    try {        
+        render = template.compile(source, options)
                 .toString().replace(ANONYMOUS_RE, 'function')
                 .replace(UTILS_RE, '$utils=template.utils')
+
         render =
-            "var template = require('art-template/dist/template')\n\n" +
+            "var template = require('art-template/dist/"+ format +"')\n\n" +
             "module.exports = " + render
 
         this.callback(null, render)

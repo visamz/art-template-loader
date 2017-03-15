@@ -9,5 +9,11 @@ npm install
 and then in 'demo' directory run:
 
 ```
-webpack-dev-server
+npm run dev
+```
+
+or
+
+```
+npm run dev-native
 ```

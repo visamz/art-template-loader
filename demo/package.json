@@ -1,9 +1,18 @@
 {
   "name": "demo",
   "version": "1.0.0",
+  "description": "Run command in 'art-template-loader' and 'demo' directory:",
+  "main": "simple/bundle.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server",
+    "dev-native": "webpack-dev-server --config webpack.config.native.js"
+  },
+  "author": "Byends",
+  "license": "ISC",
   "devDependencies": {
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
     "art-template": "^3.1.3"
