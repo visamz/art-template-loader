@@ -1,9 +1,9 @@
-# artTemplate loader for webpack
+# Webpack loader for art-template v3.1.3
 
-> [artTemplate](https://github.com/aui/artTemplate) 是新一代 javascript 模板引擎
+> [art-template](https://github.com/visamz/art-template) 是新一代 javascript 模板引擎
 
 
-> 2017-03-15 update
+*2017-03-15 update*
 
 0.2.0 version support loader options  
 `format: native` will use artTemplate native grammar
@@ -20,7 +20,7 @@
 {{/if}}
 ```
 
-[查看语法与演示](https://github.com/aui/artTemplate/wiki/syntax:simple)
+[查看语法与演示](https://github.com/visamz/art-template/wiki/%E7%AE%80%E6%B4%81%E8%AF%AD%E6%B3%95%E7%89%88)
 
 ## Installation
 
